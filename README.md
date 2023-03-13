@@ -10,6 +10,10 @@ Make sure the dev environment is installed with the below `cli` tools and `aws` 
 - `kubectl`
 - `aws`
 
+Export `KUBE_CONFIG_PATH` with `/path/to/.kube/config`
+
+    $ export KUBE_CONFIG_PATH=~/.kube/config
+
 
 ## Deployment
 
