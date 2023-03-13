@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.fullname }}
+  namespace: {{ .Values.namespace }}
+#  annotations:
+#    alb.ingress.kubernetes.io/listen-ports: {{ .Values.listen_ports }}
+#    alb.ingress.kubernetes.io/target-type: {{ .Values.target_type }}
+#    alb.ingress.kubernetes.io/backend-protocol-version: {{ .Values.backend_protocol_version }}
+#    alb.ingress.kubernetes.io/subnets: {{ .Values.subnets }}
+#    alb.ingress.kubernetes.io/scheme: {{ .Values.scheme }}
+#    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.certificate_arn }}
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.fullname }}
+                port:
+                  number: {{ .Values.reverse_proxy_port }}
+      host: {{ .Values.ingress.internal_domain_name }}

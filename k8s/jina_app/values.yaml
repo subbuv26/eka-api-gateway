@@ -1,0 +1,32 @@
+fullname: my-app
+namespace: my-ns
+name: my-app
+
+replicaCount: 1
+
+port: 50050
+
+reverse_proxy_name: reverse-proxy
+reverse_proxy_port: 8080
+
+image:
+  repository: subbuv26/image_server
+  tag: latest
+
+reverse_proxy:
+  repository: subbuv26/reverse_proxy
+  tag: latest
+
+labels:
+  managedbyhelm: true
+
+ingress:
+  internal_domain_name: ""
+
+# Ingress annotations
+alb.ingress.kubernetes.io/listen_ports: ""
+alb.ingress.kubernetes.io/target_type: ""
+alb.ingress.kubernetes.io/backend_protocol_version: ""
+alb.ingress.kubernetes.io/subnets: ""
+alb.ingress.kubernetes.io/scheme: ""
+alb.ingress.kubernetes.io/certificate_arn: ""
